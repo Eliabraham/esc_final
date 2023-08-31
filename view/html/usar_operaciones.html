@@ -1,0 +1,85 @@
+<div class="container">
+    <section id="identidad"></section>
+    <div class="col-12">
+        <div class="align-items-center justify-content-between" style="position:absolute; left:10%; top: 5%; width:80%; height:25%; overflow:auto;">
+            <h1 class="col-8" style="float:left">Solicitudes Realizadas</h1>
+            <div class="align-items-center col-4" style="float:left; ">
+                <button type="button" id="btn_add_operacion" class="btn btn-sm btn-success " style="width:100px">
+                    Nueva
+                </button>
+                <button type="button" id="btn_reporte" class="btn btn-sm btn-success" style="width:100px">
+                    Reporte
+                </button>
+                <button type="button" id="btn_menu" class="btn btn-sm btn-success col-2" style="width:100px">
+                    Menu
+                </button>
+            </div>
+            <div class="container">
+                <div class="row col-12">
+                    <div class="table-responsive" style="display: inline-block; width:100%;">
+                        <table class="table table-hover table-sm table-striped">
+                            <thead>
+                                <tr>
+                                    <th style="text-align:center;" rowspan="2">
+                                        <input type="checkbox" id="ch_sel_todo" class="check">
+                                    </th>
+                                    <th class="fc">Centro</th>
+                                    <th>Tipo de Solicitud</th>
+                                    <th>Estado de la Solicitud</th>
+                                    <th>Numero</th>
+                                </tr>
+                                <tr>
+                                    <td class="fc"><select id="filcentro" class="form-control form-control-sm filtro"></select></td>
+                                    <td><select id="filtipo" class="form-control form-control-sm filtro"></select></td>
+                                    <td><select id="filestado" class="form-control form-control-sm filtro"></select></td>
+                                    <td><input id="filnumero" type="search" class="form-control form-control-sm filtro"/></td>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>                 
+                </div>
+            </div>
+        </div>
+        <section class="form-control" id="tarjetas" style="position:absolute; left:10%; top: 30%; width:80%; height:65%; overflow:auto;">
+        </section>
+    </div>
+</div>
+<div class="modal fade modal-lg" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Elaborar Solicitud</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="form-group escuela">
+                        </div>
+                        <div class="form-group escuela">
+                            <label for="txtnombre_escuela">Centro Educativo</label>
+                            <select class="form-control form-control-sm proceso " id="txtsol_centro" name="Centro Educativo">
+                            </select>
+                        </div>
+                        <div class="form-group escuela">
+                            <label for="txtnombre_escuela">Causa de la solicitud</label>
+                            <input type="search" class="form-control form-control-sm proceso required" maxlength="150" id="txtcausa" name="Causa de la Solicitud"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtnombre_proceso">Tipo de Solicitud</label>
+                            <select id="txtnombre_proceso" name="Tipo de Solicitud" class="proceso form-control form-control-sm required"></select>
+                        </div>
+                        <div id="mostrar_campos">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+<form action="view\html\reportes\solicitud.php" method="post" id="formulario_reporte" target="_blank">
+</form>
+<section id="identidad"></section>
+<script src="view\assets\js\solicitud.js?v=1.1.16"></script>

@@ -1,0 +1,201 @@
+<div class="container">
+    <section id="identidad"></section>
+    <div class="col-12">
+        <div class="personal-data align-items-center justify-content-between" style="position:absolute; left:10%; top: 5%; width:80%; height:25%; overflow:auto;">
+            <h1 class="col-8" style="float:left">Tramites y Solicitudes</h1>
+            <div class="align-items-center col-4" style="float:left; ">
+                <button type="button" id="btn_add_operacion" class="btn btn-sm btn-success col-2" style="width:100px">
+                    Nueva
+                </button>
+                <button type="button" id="btn_reporte" class="btn btn-sm btn-success" style="width:100px">
+                    Reporte
+                </button>
+                <button type="button" id="btn_menu" class="btn btn-sm btn-success col-2" style="width:100px">
+                    Menu
+                </button>
+            </div>
+        </div>
+        <div class="row" style="position:absolute; left:10%; top: 15%; width:80%; height:80%; overflow:auto">
+            <div class="table-container col-12">
+                <ul class="nav nav-tabs" id="myTabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="tab1" data-toggle="tab" href="#tar">
+                            Referencia de Solicitudes
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="tab2" data-toggle="tab" href="#solicitudes">
+                            Solicitudes Recibidas
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active form-control form-control-sm" id="tar">
+                        <div class="container">
+                            <div class="row col-12">
+                                <div class="table-responsive" style="display: inline-block; width:100%;">
+                                    <table class="table table-hover table-sm table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Acciones de Directores</th>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <input type="search" name="filtro por Acciones" id="txtfilAccion" class="form-control form-control-sm filtro">
+                                                </td>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>                 
+                            </div>
+                        </div>
+                        <section  id="tarjetas">
+                        </section>    
+                    </div>
+                    <div class="tab-pane fade form-control form-control-sm" id="solicitudes">
+                        <div class="container">
+                            <div class="row col-12">
+                                <div class="table-responsive" style="display: inline-block; width:100%;">
+                                    <table class="table table-hover table-sm table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th rowspan="2" style="text-align:center;">
+                                                    <input type="checkbox" id="ch_sel_todo" class="check">
+                                                </th>
+                                                <th>Codigo o Nombre de centro</th>
+                                                <th>Tipo de Solicitud</th>
+                                                <th>Estado de Solicitud</th>
+                                                <th>numero de Solicitud</th>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <select name="filtro por Acciones" id="filCentro" class="form-control form-control-sm filsolicitud"></select>
+                                                </td>
+                                                <td>
+                                                    <select name="filtro por centro" id="filacciones" class="form-control form-control-sm filsolicitud"></select>
+                                                </td>
+                                                <td>
+                                                    <select name="filtro por Acciones" id="filestado" class="form-control form-control-sm filsolicitud"></select>
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="filtro por Acciones" id="filnumero" class="form-control form-control-sm filsolicitud"/>
+                                                </td>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>                 
+                            </div>
+                        </div>
+                        <div  id="lista_solicitudes" style="overflow:auto">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade modal-lg" id="mymodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Revision de Solicitud</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="form-group escuela">
+                        </div>
+                        <div class="form-group escuela">
+                            <label for="txtnombre_escuela">Causa de la solicitud</label>
+                            <div id="txtcausa" name="Causa de la Solicitud" class="form-control form-control-sm"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtnombre_proceso">Tipo de Solicitud</label>
+                            <div id="txtnombre_proceso" name="Tipo de Solicitud" class="form-control form-control-sm"></div>
+                        </div>
+                        <div id="mostrar_campos">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade modal-lg" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Operaciones</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="ndocentesmaculion">Nombre del Proceso</label>
+                            <input type="search" name="Nombre del Proceso" id="txtnombre_proceso" class="proceso form-control form-control-sm required"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtdescripcion_proceso">Descripción del Proceso</label>
+                            <textarea name="Descripción del Proceso" id="txtdescripcion_proceso" class="proceso form-control form-control-sm required"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtdescripcion_proceso">Link de Ficha</label>
+                            <input type="search" name="Link de la Ficha" id="txtlink_ficha" class="proceso form-control form-control-sm required"/>
+                        </div>
+                        <div class="table-responsive" style="display: inline-block; width:100%; max-height: 170px; overflow: auto;">
+                            <table class="table table-hover table-sm table-striped" id="tbl_campos">
+                                <thead>
+                                    <tr>
+                                        <th>Campo</th>
+                                        <th>Tipo</th>
+                                        <th>Valores</th>
+                                        <th>Descripción</th>
+                                        <th rowspan="2">
+                                            <button type="button" class="btn btn-primary btn-sm" id="agregar_campo">
+                                                <i class="fa fa-plus"></i>
+                                            </button>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="search" id="campo" class="form-control form-control-sm"/>
+                                        </td>
+                                        <td>
+                                            <select id="tipo" class="form-control form-control-sm">
+                                                <option value="">--</option>
+                                                <option >texto</option>
+                                                <option >archivo</option>
+                                                <option >lista</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="search" id="valores" class="form-control form-control-sm">
+                                        </td>
+                                        <td>
+                                            <input type="search" id="descripcion" class="form-control form-control-sm">
+                                        </td>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-sm btn-primary" id="guardar_operacion" style="width:150px;" value="crear_operacion">Guardar</button>
+                <button class="btn btn-sm btn-primary" id="modificar_operacion" style="width:150px;" value="modificar_operacion">Modificar</button>
+                <button class="btn btn-sm btn-secondary" id="cancelar_operacion" style="width:150px;" value="modificar_operacion">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<form action="view\html\reportes\solicitud.php" method="post" id="formulario_reporte" target="_blank">
+</form>
+<section id="identidad"></section>
+<script src="view\assets\js\operaciones.js?v=1.1.13"></script>
+

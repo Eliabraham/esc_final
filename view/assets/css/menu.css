@@ -1,0 +1,123 @@
+.menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background-color: #f1f1f1;
+  position: relative;
+  overflow: hidden;
+}
+.menu-item {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 120px;
+  background-color: #bbbbff;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 50%;
+  transform-origin: center center;
+  transition: transform 0.5s ease-in-out;
+}
+.menu-item:hover {
+  transform: rotate(360deg);
+  cursor: pointer;
+}
+/*_____________________________________________________________________________________________________________________________________________________*/
+    .menu-item-2:nth-child(1) {
+      transform: rotate(0deg) translateX(180px) rotate(0deg);
+    }
+    .menu-item-2:nth-child(2) {
+      transform: rotate(180deg) translateX(180px) rotate(-180deg);
+    }
+/*_____________________________________________________________________________________________________________________________________________________*/
+    .menu-item-3:nth-child(1) {
+      transform: rotate(0deg) translateX(180px) rotate(0deg);
+    }
+    .menu-item-3:nth-child(2) {
+      transform: rotate(120deg) translateX(180px) rotate(-120deg);
+    }
+    .menu-item-3:nth-child(3) {
+      transform: rotate(240deg) translateX(180px) rotate(-240deg);
+    }
+/*_____________________________________________________________________________________________________________________________________________________*/
+    .menu-item-4:nth-child(1) {
+      transform: rotate(0deg) translateX(180px) rotate(0deg);
+    }
+    .menu-item-4:nth-child(2) {
+      transform: rotate(90deg) translateX(180px) rotate(-90deg);
+    }
+    .menu-item-4:nth-child(3) {
+      transform: rotate(180deg) translateX(180px) rotate(-180deg);
+    }
+    .menu-item-4:nth-child(4) {
+      transform: rotate(270deg) translateX(180px) rotate(-270deg);
+    }
+/*_____________________________________________________________________________________________________________________________________________________*/
+   .menu-item-5:nth-child(1) {
+      transform: rotate(0deg) translateX(180px) rotate(0deg);
+    }
+    .menu-item-5:nth-child(2) {
+      transform: rotate(72deg) translateX(180px) rotate(-72deg);
+    }
+    .menu-item-5:nth-child(3) {
+      transform: rotate(144deg) translateX(180px) rotate(-144deg);
+    }
+    .menu-item-5:nth-child(4) {
+      transform: rotate(216deg) translateX(180px) rotate(-216deg);
+    }
+    .menu-item-5:nth-child(5) {
+    transform: rotate(288deg) translateX(180px) rotate(-288deg);
+    }
+/*_____________________________________________________________________________________________________________________________________________________*/
+    .menu-item-6:nth-child(1) {
+      transform: rotate(0deg) translateX(180px) rotate(0deg);
+    }
+    .menu-item-6:nth-child(2) {
+      transform: rotate(60deg) translateX(180px) rotate(-60deg);
+    }
+    .menu-item-6:nth-child(3) {
+      transform: rotate(120deg) translateX(180px) rotate(-120deg);
+    }
+    .menu-item-6:nth-child(4) {
+      transform: rotate(180deg) translateX(180px) rotate(-180deg);
+    }
+    .menu-item-6:nth-child(5) {
+      transform: rotate(240deg) translateX(180px) rotate(-240deg);
+    }
+    .menu-item-6:nth-child(6) {
+      transform: rotate(300deg) translateX(180px) rotate(-300deg);
+    }
+    /*.menu-item-7 {
+      transform: rotate(342deg) translateX(180px) rotate(-342deg);
+    }*/
+    .menu-item-7:nth-child(1) {
+      transform: rotate(0deg) translateX(180px) rotate(0deg);
+    } 
+    .menu-item-7:nth-child(2) {
+      transform: rotate(51.43deg) translateX(180px) rotate(-51.43deg);
+    }
+    .menu-item-7:nth-child(3) {
+      transform: rotate(102.86deg) translateX(180px) rotate(-102.86deg);
+    }
+    .menu-item-7:nth-child(4) {
+      transform: rotate(154.29deg) translateX(180px) rotate(-154.29deg);
+    }
+    .menu-item-7:nth-child(5) {
+      transform: rotate(205.71deg) translateX(180px) rotate(-205.71deg);
+    }
+    .menu-item-7:nth-child(6) {
+      transform: rotate(257.14deg) translateX(180px) rotate(-257.14deg);
+    }
+    .menu-item-7:nth-child(7) {
+      transform: rotate(308.57deg) translateX(180px) rotate(-308.57deg);
+    }
+    
+.icono_menu {
+  font-size: 2em;
+}

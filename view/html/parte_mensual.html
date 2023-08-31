@@ -1,0 +1,293 @@
+<div id="container">
+    <section id="identidad"></section>
+    <div class="col-12">
+        <div class="align-items-center justify-content-between" style="position:absolute; left:10%; top: 5%; width:80%; height:25%; overflow:auto;">
+            <h1 class="col-7" style="float:left">Parte Mensual</h1>
+            <div class="align-items-center col-5" style="float:left; ">
+                <button type="button" id="btn_add_parte" class="btn btn-sm btn-success" style="width:100px">
+                    Agregar +
+                </button>
+                <button type="button" id="btn_reporte" class="btn btn-sm btn-success" style="width:100px">
+                    Reporte
+                </button>
+                <button type="button" id="btn_faltantes" class="btn btn-sm btn-success" style="width:100px">
+                    Faltantes
+                </button>
+                <button type="button" id="btn_menu" class="btn btn-sm btn-success col-2" style="width:100px">
+                    Menu
+                </button>
+            </div>
+            <div class="row col-12">
+                <div style="width:50px; text-align:right; display:inline-block;">
+                    <br><input type="checkbox" class="check" id="ch_sel_todo"/>
+                </div>
+                <div class="col">
+                    <label for="centro">Centro Educativo:</label>
+                    <select id="centro" name="centro" class="form-control form-control-sm filtro">
+                    </select>
+                </div>
+                <div class="col">
+                    <label for="anio">Año:</label>
+                    <select id="anio" form="f_faltantes" name="anio" class="form-control form-control-sm filtro"></select>
+                </div>
+                <div class="col">
+                    <label for="mes">Mes:</label>
+                    <select name="mes" id="mes" form="f_faltantes" class="parte form-control form-control-sm filtro">
+                        <option value="">--</option>
+                        <option >Enero</option>
+                        <option >Febrero</option>
+                        <option >Marzo</option>
+                        <option >Abril</option>
+                        <option >Mayo</option>
+                        <option >Junio</option>
+                        <option >Julio</option>
+                        <option >Agosto</option>
+                        <option >Septiembre</option>
+                        <option >Octubre</option>
+                        <option >Nobiembre</option>
+                        <option >Diciembre</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="form-control" id="tab_parte" style="position:absolute; left:10%; top: 30%; width:80%; height:65%; overflow:auto;">
+        </div>
+    </div>
+</div>
+<form action="view\html\reportes\parte_mensual.php" method="post" id="formulario_reporte" target="_blank">
+</form>
+<form action="view\html\reportes\faltantes_parte_mensual.php" method="post" id="f_faltantes" target="_blank">
+</form>
+<div class="modal fade modal-lg" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Informacion de Parte mensual</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="ndocentesmaculion">N° de Docentes Maculinos:</label>
+                                <input maxlength="2" type="search" onkeypress="return solo_numero(event)" name="Numero de Docentes Masculinos" id="txtndocmas" tabindex="1" class="parte form-control form-control-sm required">
+                            </div>
+                            <div class="form-group">
+                                <label for="anno_parte">Año:</label>
+                                <input maxlength="4" type="search" onkeypress="return solo_numero(event)" name="Año de Parte Mensual" id="txtanno_parte" tabindex="4" class=" parte form-control form-control-sm required">
+                            </div>
+                            <div class="form-group">
+                                <label for="anno_parte">Año de Parte Anterio</label>
+                                <input maxlength="4" tabindex="7" type="search" onkeypress="return solo_numero(event)" name="Año de Parte Anterior" id="txtanno_parte_anterior" class=" parte form-control form-control-sm required">
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="ndocentesmaculion">N° de Docentes Femeninos:</label>
+                                <input maxlength="2" type="search" onkeypress="return solo_numero(event)" name="Numero de Docentes Femeninos" id="txtndocfem" tabindex="2" class="parte form-control form-control-sm required">
+                            </div>
+                            <div class="form-group">
+                                <label for="mesparte">Mes:</label>
+                                <select name="Mes de Parte Mensual" tabindex="5" id="txtmesparte" class="parte form-control form-control-sm required">
+                                    <option value="">--</option>
+                                    <option >Enero</option>
+                                    <option >Febrero</option>
+                                    <option >Marzo</option>
+                                    <option >Abril</option>
+                                    <option >Mayo</option>
+                                    <option >Junio</option>
+                                    <option >Julio</option>
+                                    <option >Agosto</option>
+                                    <option >Septiembre</option>
+                                    <option >Octubre</option>
+                                    <option >Nobiembre</option>
+                                    <option >Diciembre</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="mesparte">Mes de Parte Anterior:</label>
+                                <select tabindex="8" name="Mes de Parte Anterior" id="txtmesparteanterior" class="parte form-control form-control-sm required">
+                                    <option value="">--</option>
+                                    <option >Enero</option>
+                                    <option >Febrero</option>
+                                    <option >Marzo</option>
+                                    <option >Abril</option>
+                                    <option >Mayo</option>
+                                    <option >Junio</option>
+                                    <option >Julio</option>
+                                    <option >Agosto</option>
+                                    <option >Septiembre</option>
+                                    <option >Octubre</option>
+                                    <option >Nobiembre</option>
+                                    <option >Diciembre</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="">N° Total de Docentes:</label>
+                                <input maxlength="2" tabindex="3" readonly type="text" name="Numero Total de Docentes" id="txtntotdoc" class="parte form-control form-control-sm required">
+                            </div>
+                            <div class="form-group">
+                                <label for="ndocentesmaculion">N° Dias Trabajados</label>
+                                <input maxlength="2" type="search" onkeypress="return solo_numero(event)" tabindex="6" name="Numero de Dias Trabajados" id="txtndiastrab" class="parte form-control form-control-sm required">
+                            </div>
+                            <br>
+                            <button type="button" style="width:48%;" id="guardarpartemensual" class="btn btn-primary btn-sm" value="guardar_parte">Guardar</button>
+                            <button type="button" style="width:48%;" id="clsmodal" class="btn btn-secondary btn-sm" data-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="table-container col-12">
+                            <ul class="nav nav-tabs" id="myTabs">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="tab1" data-toggle="tab" href="#tabla1">Datos de alumnos</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="tab2" data-toggle="tab" href="#tabla2">Datos de Docentes</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane fade show active" id="tabla1" style="overflow:auto">
+                                    <table class="table table-sm table-striped table-bordered table-borderless table-hover" id="tabinfpm">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th rowspan="2">GRADOS</th>
+                                                <th colspan="3">Matricula Consolidada</th>
+                                                <th colspan="3">Matricula Anterior</th>
+                                                <th colspan="3">Matricula Actual</th>
+                                                <th colspan="3">Asistgencia Media</th>
+                                                <th colspan="3">Tanto Porciento</th>
+                                                <th colspan="3">Inasistencia</th>
+                                                <th colspan="3">Ingresos</th>
+                                                <th colspan="3">Desertores</th>
+                                                <th colspan="3">Traslados</th>
+                                                <th rowspan="3">
+                                                    <button class="btn btn-primary btn-sm" id="addinfpm" value="crear-linea_parte">
+                                                        <i class="fa fa-plus"></i>
+                                                    </button>
+                                                    <button class="btn btn-primary btn-sm" id="addsubtot" value="0">
+                                                        ST
+                                                    </button>
+                                                    <button class="btn btn-danger btn-sm" onclick="limpiar_tabla()" value="0">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </button>
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <th>N</th>
+                                                <th>V</th>
+                                                <th>T</th>
+                                                <th>N</th>
+                                                <th>V</th>
+                                                <th>T</th>
+                                                <th>N</th>
+                                                <th>V</th>
+                                                <th>T</th>
+                                                <th>N</th>
+                                                <th>V</th>
+                                                <th>T</th>
+                                                <th>N</th>
+                                                <th>V</th>
+                                                <th>T</th>
+                                                <th>N</th>
+                                                <th>V</th>
+                                                <th>T</th>
+                                                <th>N</th>
+                                                <th>V</th>
+                                                <th>T</th>
+                                                <th>N</th>
+                                                <th>V</th>
+                                                <th>T</th>
+                                                <th>N</th>
+                                                <th>V</th>
+                                                <th>T</th>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    <input type="text" name="Grado" id="txtgrado" class="form-control form-control-sm infparmen required" list="grados"/>
+                                                    <datalist id="grados">  
+                                                    </datalist>
+                                                </th>
+                                                <th><input type="text" value="0" style="width:50px" onkeypress="return solo_numero(event)" maxlength="3" class="form-control form-control-sm infparmen required disabled bg-secondary" id="txtmcn" name="matricula consolidada niñas" readonly/></th>
+                                                <th><input type="text" value="0" style="width:50px" onkeypress="return solo_numero(event)" maxlength="3" class="form-control form-control-sm infparmen required disabled bg-secondary" id="txtmcv" name="matricula consolidada varones" readonly/></th>
+                                                <th><input type="text" value="0" style="width:50px" onkeypress="return solo_numero(event)" maxlength="3" class="form-control form-control-sm infparmen required disabled bg-secondary" id="txtmct" name="matricula consolidada total" readonly/></th>
+                                                <th><input type="text" value="0" style="width:50px" onkeypress="return solo_numero(event)" maxlength="3" class="form-control form-control-sm infparmen required" id="txtmantni" name="Matricula anterior niñas"/></th>
+                                                <th><input type="text" value="0" style="width:50px" onkeypress="return solo_numero(event)" maxlength="3" class="form-control form-control-sm infparmen required" id="txtmantva" name="Matricula anterior varones"/></th>
+                                                <th><input type="text" value="0" style="width:50px" onkeypress="return solo_numero(event)" maxlength="3" class="form-control form-control-sm infparmen required disabled bg-secondary" id="txtmantto" name="Matricula anterior consolidada" readonly/></th>
+                                                <th><input type="text" value="0" style="width:50px" onkeypress="return solo_numero(event)" maxlength="3" class="form-control form-control-sm infparmen required" id="txtmaacni" name="Matricula actual niñas"/></th>
+                                                <th><input type="text" value="0" style="width:50px" onkeypress="return solo_numero(event)" maxlength="3" class="form-control form-control-sm infparmen required" id="txtmaacva" name="Matricula actual Varones"/></th>
+                                                <th><input type="text" value="0" style="width:50px" onkeypress="return solo_numero(event)" maxlength="3" class="form-control form-control-sm infparmen required disabled bg-secondary" id="txtmaacto" name="Matricula actual total" readonly/></th>
+                                                <th><input type="text" value="0" style="width:50px" onkeypress="return solo_numero(event)" maxlength="3" class="form-control form-control-sm infparmen required disabled bg-secondary" id="txtasismedni" name="Asistencia Madia Niñas"/></th>
+                                                <th><input type="text" value="0" style="width:50px" onkeypress="return solo_numero(event)" maxlength="3" class="form-control form-control-sm infparmen required disabled bg-secondary" id="txtasismedva" name="Asistencia Madia Varones"/></th>
+                                                <th><input type="text" value="0" style="width:50px" onkeypress="return solo_numero(event)" maxlength="3" class="form-control form-control-sm infparmen required disabled bg-secondary" id="txtasismedto" name="Asistencia Madia total" readonly/></th>
+                                                <th><input type="text" value="0" style="width:50px" onkeypress="return solo_numero(event)" maxlength="3" class="form-control form-control-sm infparmen required disabled bg-secondary" id="txttanporni" name="Tanto Porciento Niñas" readonly/></th>
+                                                <th><input type="text" value="0" style="width:50px" onkeypress="return solo_numero(event)" maxlength="3" class="form-control form-control-sm infparmen required disabled bg-secondary" id="txttanporva" name="Tanto Porciento Varones" readonly/></th>
+                                                <th><input type="text" value="0" style="width:50px" onkeypress="return solo_numero(event)" maxlength="3" class="form-control form-control-sm infparmen required disabled bg-secondary" id="txttanporto" name="Tanto Porciento Total" readonly/></th>
+                                                <th><input type="text" value="0" style="width:50px" onkeypress="return solo_numero(event)" maxlength="3" class="form-control form-control-sm infparmen required" id="txtinani" name="Inasistencias niñas"/></th>
+                                                <th><input type="text" value="0" style="width:50px" onkeypress="return solo_numero(event)" maxlength="3" class="form-control form-control-sm infparmen required" id="txtinava" name="Inasistencias Varones"/></th>
+                                                <th><input type="text" value="0" style="width:50px" onkeypress="return solo_numero(event)" maxlength="3" class="form-control form-control-sm infparmen required disabled bg-secondary" id="txtinato" name="Inasistencias Total" readonly/></th>
+                                                <th><input type="text" value="0" style="width:50px" onkeypress="return solo_numero(event)" maxlength="3" class="form-control form-control-sm infparmen required" id="txtingni" name="ingresos Niñas"/></th>
+                                                <th><input type="text" value="0" style="width:50px" onkeypress="return solo_numero(event)" maxlength="3" class="form-control form-control-sm infparmen required" id="txtingva" name="ingresos Varones"/></th>
+                                                <th><input type="text" value="0" style="width:50px" onkeypress="return solo_numero(event)" maxlength="3" class="form-control form-control-sm infparmen required disabled bg-secondary" id="txtingto" name="ingresos Totales" readonly/></th>
+                                                <th><input type="text" value="0" style="width:50px" onkeypress="return solo_numero(event)" maxlength="3" class="form-control form-control-sm infparmen required" id="txtdeserni" name="Deserciones Niñas"/></th>
+                                                <th><input type="text" value="0" style="width:50px" onkeypress="return solo_numero(event)" maxlength="3" class="form-control form-control-sm infparmen required" id="txtdeserva" name="Deserciones Varones"/></th>
+                                                <th><input type="text" value="0" style="width:50px" onkeypress="return solo_numero(event)" maxlength="3" class="form-control form-control-sm infparmen required disabled bg-secondary" id="txtdeserto" name="Deserciones Total" readonly/></th>
+                                                <th><input type="text" value="0" style="width:50px" onkeypress="return solo_numero(event)" maxlength="3" class="form-control form-control-sm infparmen required" id="txttrasladosni" name="traslados Niñas"/></th>
+                                                <th><input type="text" value="0" style="width:50px" onkeypress="return solo_numero(event)" maxlength="3" class="form-control form-control-sm infparmen required" id="txttrasladosva" name="traslados Varones"/></th>
+                                                <th><input type="text" value="0" style="width:50px" onkeypress="return solo_numero(event)" maxlength="3" class="form-control form-control-sm infparmen required disabled bg-secondary" id="txttrasladosto" name="traslados Totales" readonly/></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>        
+                                </div>
+                                <div class="tab-pane fade" id="tabla2" style="overflow:auto">
+                                    <table class="table table-sm table-striped table-bordered table-borderless table-hover" id="tabinfdoc">
+                                        <thead>
+                                            <tr>
+                                                <th rowspan="2">Nombre Docente</th>
+                                                <th rowspan="2">Cargo</th>
+                                                <th rowspan="2">Grado</th>
+                                                <th rowspan="2">N° Alumnos por Sección</th>
+                                                <th colspan="3">Inasistencias</th>
+                                                <th rowspan="2">Observaciones</th>
+                                                <th rowspan="2">
+                                                    <button class="btn btn-primary btn-sm" id="addinfprof" value="crear-linea_parte">
+                                                        <i class="fa fa-plus"></i>
+                                                    </button>
+                                                </th>    
+                                            </tr>
+                                            <tr>
+                                                <th>Autorizadas</th>
+                                                <th>No Autorizadas</th>
+                                                <th>Total</th>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <input type="text" id="ltdocente" list="ldocentes" class="tabprof form-control form-control-sm" style="width:200px" />
+                                                    <datalist id="ldocentes">  
+                                                    </datalist>
+                                                </td>
+                                                <td><input type="text" id="ltcargo" class="tabprof form-control form-control-sm" style="width:150px" /></td>
+                                                <td><input type="text" id="ltgrado" class="tabprof form-control form-control-sm" style="width:100px" /></td>
+                                                <td><input type="number" class="tabprof form-control form-control-sm" style="width:100px" /></td>
+                                                <td><input type="number" id="ina_aut" class="tabprof form-control form-control-sm" style="width:130px" /></td>
+                                                <td><input type="number" id="ina_no_aut" class="tabprof form-control form-control-sm" style="width:130px" /></td>
+                                                <td><input type="number" id="tot_ina" class="tabprof form-control form-control-sm" style="width:100px" /></td>
+                                                <td><input type="text" class="tabprof form-control form-control-sm" style="width:300px" /></td>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<section id="identidad"></section>
+<script src="view\assets\js\parte.js?v=1.1.62"></script>

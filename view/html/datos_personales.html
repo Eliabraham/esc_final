@@ -1,0 +1,144 @@
+<div class="container">
+    <section id="identidad"></section>
+    <div class="col-12">
+        <div class="personal-data align-items-center justify-content-between">
+            <h1 class="col-12">Datos Personales</h1>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="txtIdentidad">Identidad</label>
+                            <input type="text" tabindex="1" id="txtIdentidad" name="Documento de Identidad" class="form-control form-control-sm dtper required" />
+                        </div>
+                        <div class="form-group">
+                            <label for="txtApellido1">Primer Apellido</label>
+                            <input type="text" tabindex="4" id="txtApellido1" name="Primer Apellido" class="form-control form-control-sm dtper required" />
+                        </div>
+                        <div class="form-group">
+                            <label for="txtCorreo">Correo</label>
+                            <input type="text" tabindex="7" id="txtCorreo" name="Email" class="form-control form-control-sm dtper required" />
+                        </div>
+                        <div class="form-group">
+                            <label for="txtEscalafon">Escalafón</label>
+                            <input type="text" tabindex="10" id="txtEscalafon" name="Escalafon" class="form-control form-control-sm dtper required" />
+                        </div>
+                        <div class="form-group">
+                            <label for="txtUsuario">Usuario</label>
+                            <input type="text" tabindex="13" id="txtUsuario" name="Usuario" class="form-control form-control-sm dtper " />
+                        </div>
+                        <div class="form-group">
+                            <label for="txtClave">Clave</label>
+                            <input type="password" tabindex="15" id="txtClave" class="form-control form-control-sm dtper " />
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="txtNombre1">Primer Nombre</label>
+                            <input type="text" tabindex="2" id="txtNombre1" name="Primer nombre" class="form-control form-control-sm dtper required" />
+                        </div>
+                        <div class="form-group">
+                            <label for="txtApellido2">Segundo Apellido</label>
+                            <input type="text" tabindex="5" id="txtApellido2" name="Segundo Nombre" class="form-control form-control-sm dtper required" />
+                        </div>
+                        <div class="form-group">
+                            <label for="txtTelefono">Teléfono</label>
+                            <input type="text" tabindex="8" id="txtTelefono" name="Telefono" class="form-control form-control-sm dtper required" />
+                        </div>
+                        <div class="form-group">
+                            <label for="txtFoto">Foto</label>
+                            <input type="file" tabindex="11" name="Foto" id="arcFoto" class="form-control form-control-sm dtper" />
+                        </div>
+                        <div class="form-group">
+                            <label for="txtconfirmacion_usuario">Titulo</label>
+                            <input type="text" tabindex="14" id="txtTitulo" name="titulo" class="form-control form-control-sm dtper required" />
+                        </div>
+                        <div class="form-group">
+                            <label for="txtconfirmacion_clave">Confirmación Clave</label>
+                            <input type="password" tabindex="16" id="txtconfirmacion_clave" class="form-control form-control-sm" />
+                        </div>  
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="txtNombre2">Segundo Nombre</label>
+                            <input type="text" tabindex="3" id="txtNombre2" name="Segundo Nombre" class="form-control form-control-sm dtper required" />
+                        </div>
+                        <div class="form-group">
+                            <label for="txtfecha_nacimeito">Fecha de Nacimiento</label>
+                            <input type="date" tabindex="6" id="txtfecha_nacimeito" name="Fecha de Nacimiento" class="form-control form-control-sm dtper required" />
+                        </div>
+                        <div class="form-group">
+                            <label for="txtsexo">Sexo</label>
+                            <select id="txtsexo" tabindex="9" name="Sexo" class="form-control form-control-sm dtper required">
+                                <option value="">Seleccione</option>
+                                <option value="masculino">Masculino</option>
+                                <option value="femenino">Femenino</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtImprema">Imprema</label>
+                            <input type="text" tabindex="12" name="Imprema" id="txtImprema" class="form-control form-control-sm dtper required" />
+                        </div><br>
+                        <div class="form-group">
+                            <button class="btn btn-primary form-control" id="btnaceptar" value="actualizar_mis_datos">Aceptar</button>
+                        </div><br>
+                        <div class="form-group">
+                            <button class="btn btn-secondary form-control" id="volver" >Volver</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="vista_foto">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+        $("#volver").on({
+            "click":function(){mostrar_menu();}
+        });
+        $("#btnaceptar").on({
+            "click":function(){
+                datos = get_data('dtper',this);
+                data=datos.written;
+                request_missing_data(datos['err']);
+                if($("#txtClave").val()!=$("#txtconfirmacion_clave").val()){
+                    alert("las contraseñas no Coinciden\nRevise el usuario y la clave");
+                    throw `ejecución detenida por credenciales`;
+                }
+                $.ajax({
+                    type: "POST",
+                    url:  rt_docentes,
+                    processData: false,
+                    contentType: false,
+                    data: data,
+                    cache:false,
+                }).done(function(resp){
+                    $.notify(resp, "info");
+                }).fail(function(jqXHR, textStatus){
+                    validate.error_ajax(jqXHR, textStatus)
+                });
+            }
+        });
+        $("#arcFoto").on({
+            'change':function(){
+                agregarImagen(this, 'vista_foto');
+            }
+        })
+        $("#txtCorreo").on({
+            "blur":function(){
+                return for_ema(this);
+            }
+        });
+        $("#txtTelefono").on({
+            "keypress":function(){return solo_numero(event);}
+        });
+        $("#txtNombre1,#txtNombre2,#txtApellido1,#txtApellido2").on({
+            keyup:function(){
+                this.value=mayini(this.value);
+            }
+        });
+    });
+</script>
+  

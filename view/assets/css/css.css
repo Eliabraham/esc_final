@@ -1,0 +1,39 @@
+
+.icono_campo{
+    width: 15px;
+}
+.icono_primario{
+    width: 90px;
+}
+.check{
+    transform: scale(2); /* Ajusta el valor para aumentar o disminuir el tamaño */
+    margin-right: 5px; /* Añade un espacio entre el checkbox y el texto */
+}
+#identidad{
+    position:absolute;
+    color: midnightblue;
+    left: 0%;
+    top: 0%;
+    width: 100%;
+    height: 5%;
+    z-index: 5;
+}
+.personal-data {
+    position: absolute;
+    left: 10%;
+    top: 10%;
+    width: 80%;
+    height: 80%;
+    overflow: auto;
+    padding: 10px;
+
+}
+.personal-data h1 {
+    float: left;
+}
+.data-fields {
+    margin-top: 20px;
+}
+.form-group {
+    margin-bottom: 10px;
+}

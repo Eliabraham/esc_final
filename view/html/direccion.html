@@ -1,0 +1,119 @@
+<div id="container">
+    <section id="identidad"></section>
+    <div class="col-12">
+        <div class="align-items-center justify-content-between" style="position:absolute; left:10%; top: 5%; width:80%; height:25%; overflow:auto;">
+            <h1 class="col-8" style="float:left">Direcciones</h1>
+            <div class="align-items-center col-4" style="float:left; ">
+                <button type="button" id="btn_add_direccion" class="btn btn-sm btn-success col-2" style="width:100px">
+                    Agregar +
+                </button>
+                <button type="button" id="btn_reporte" class="btn btn-sm btn-success" style="width:100px">
+                    Reporte
+                </button>
+                <button type="button" id="btn_menu" class="btn btn-sm btn-success col-2" style="width:100px">
+                    Menu
+                </button>
+            </div>
+            <div class="table-responsive" style="display: inline-block; width:100%;">
+                <table class="table table-hover table-sm table-striped">
+                    <thead>
+                        <tr>
+                            <th rowspan="2" style="text-align:center;"><input type="checkbox" id="ch_sel_todo" class="check"></th>
+                            <th>Municipio</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="search" name="filtro por municipio" id="txtfilMunicipio" class="form-control form-control-sm filtro">
+                            </td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <section class="form-control" id="tarjetas" style="position:absolute; left:10%; top: 30%; width:80%; height:65%; overflow:auto;">
+        </section>
+    </div>
+</div>
+<div class="modal fade modal-lg" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Registro de Direcciones Regionales</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <h6>DATOS DE LA DIRECCIÓN</h6>
+                        <div class="col-md-4 col-lg-4 col-sm-12">
+                            <div class="form-group">
+                                <label for="txt">Departamento:</label>
+                                <input tabindex="2" type="search" class="form-control form-control-sm required direccion mayini" name="Departamento" id="txtDepartamento" maxlength="15"/>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <label for="txt">Email:</label>
+                                <input tabindex="5" type="search" class="form-control form-control-sm required direccion" name="Email de Dirección" id="txtEmailDireccion" maxlength="50" />
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-lg-4 col-sm-12">
+                            <div class="form-group">
+                                <label for="txt">Municipio:</label>
+                                <input tabindex="3" type="search" class="form-control form-control-sm required direccion mayini" name="Municipio" id="txtMunicipio" maxlength="40"/>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <label for="txt">Telefono:</label>
+                                <input tabindex="6" type="search" class="form-control form-control-sm required direccion" name="Telefono de Dirección" id="txtTelefonoDireccion" maxlength="15"/>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-lg-4 col-sm-12">
+                            <div class="form-group">
+                                <label for="txt">Ubicación:</label>
+                                <input tabindex="4" type="search" class="form-control form-control-sm required direccion" name="Ubicación Geografica" id="txtDireccionGeografica" maxlength="150"/>
+                            </div>
+                            <br/><br/>
+                            <button class="btn btn-primary btn-sm" style="width:49%;" type="button" id="btn_guardar" value="crear-direccion">Guardar</button>
+                            <button class="btn btn-primary btn-sm" style="width:49%;" type="button" id="btn_modificar" value="actualizar-direccion">Modificar</button>
+                            <button class="btn btn-secondary btn-sm" style="width:49%;" type="button" id="btn_cancelar">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade " id="MyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Asignacion de Director</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div id='tdepartamento' style="display:inline-block"></div>
+                    <div id='tmunicipio' style="display:inline-block"></div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="candidatos">Candidatos</label>
+                            <select id="candidatos" class="form-control form-control-sm"></select>
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="candidatos">Fecha de Inicio</label>
+                            <input type="date" name="" id="fasignacion" class="form-control form-control-sm">
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="candidatos">Fecha de Culminacion</label>
+                            <input type="date" name="" id="fvencimiento" class="form-control form-control-sm">
+                        </div>
+                    </div>
+                    <button id="btn_guardar_director" class="btn btn-sm btn-primary">ACEPTAR</button>
+                </div>
+            </div>
+        </div>
+    </div> 
+</div>
+<form action="view\html\reportes\direcciones.php" method="post" id="formulario_reporte" target="_blank"></form>
+<section id="identidad"></section>
+<script src="view\assets\js\direcciones.js?v=1.1.18"></script> 

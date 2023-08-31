@@ -1,0 +1,284 @@
+<div class="container">
+    <section id="identidad"></section>
+    <div class="col-12">
+        <div class="align-items-center justify-content-between" style="position:absolute; left:10%; top: 5%; width:80%; height:25%; overflow:auto;">
+            <h1 class="col-8" style="float:left">REGISTRO DE DOCENTES</h1>
+            <div class="align-items-center col-4" style="float:left; ">
+                <button type="button" id="btn_add_docente" class="btn btn-sm btn-success" style="width:100px">
+                    Agregar +
+                </button>
+                <button type="button" id="btn_reporte" class="btn btn-sm btn-success" style="width:100px">
+                    Reporte
+                </button>
+                <button type="button" id="btn_menu" class="btn btn-sm btn-success" style="width:100px">
+                    Menu
+                </button>
+            </div>
+            <div class="table-responsive" style="display: inline-block; width:100%;">
+                <table class="table table-hover table-sm table-striped" id="tbl_docentes">
+                    <thead>
+                        <tr>
+                            <th rowspan="2" class="text-center">
+                                <input type="checkbox" class="check" id="ch_sel_todo"/>
+                            </th>
+                            <th>Identidad</th>
+                            <th>Nombre o Apellido</th>
+                            <th>Escalafon</th>
+                            <th>Imprema</th>
+                            <th>Estatus</th>
+                        </tr>
+                        <tr>
+                            <th><input type="text" form="formulario_reporte" name="fil_Identidad" id="fil_Identidad" class="filtro form-control form-control-sm"> </th>
+                            <th><input type="text" form="formulario_reporte" name="fil_Nombre" id="fil_Nombre" class="filtro form-control form-control-sm"></th>
+                            <th><input type="text" form="formulario_reporte" name="fil_Escalafon" id="fil_Escalafon" class="filtro form-control form-control-sm"> </th>
+                            <th><input type="text" form="formulario_reporte" name="fil_Imprema" id="fil_Imprema" class="filtro form-control form-control-sm"> </th>
+                            <th>
+                                <select form="formulario_reporte" class="filtro form-control form-control-sm" name="filStatus" id="filStatus" required>
+                                    <option value="">--</option>
+                                    <option value="activo">Activo</option>
+                                    <option value="inactivo">Inactivo</option>
+                                </select>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+        <section class="form-control" id="tarjetas" style="position:absolute; left:10%; top: 30%; width:80%; height:65%; overflow:auto;">
+        </section>
+    </div>
+</div>
+<div class="modal fade modal-lg" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Registro de Docentes</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6 col-sm-12">
+                            <div class="form-group">
+                                <label for="txtColegiacion">Identidad:</label>
+                                <input type="search" class="form-control form-control-sm datadoc required" maxlength="15" onkeypress="return solo_numero(event)" placeholder="xxxx-xxxx-xxxx" id="txtIdentidad" name="Documento de Identidad" required>
+                            </div><br>
+                            <div class="form-group">
+                                <label for="txtStatus">Status:</label>
+                                <select class="form-control form-control-sm datadoc required" name="Status" id="txtStatus" required>
+                                  <option value="">--</option>
+                                  <option value="activo">Activo</option>
+                                  <option value="inactivo">Inactivo</option>
+                                </select>
+                            </div><br>
+                            <div class="form-group">
+                                <label for="txtPnombre">Primer Nombre:</label>
+                                <input type="search" class="form-control form-control-sm mayini datadoc required" name="Primer Nombre" id="txtPnombre" maxlength="50" />
+                            </div><br>
+                            <div class="form-group">
+                                <label for="txtSnombre">Segundo Nombre:</label>
+                                <input type="search" class="form-control form-control-sm mayini datadoc required" name="Segundo Nombre" maxlength="50" id="txtSnombre" >
+                            </div><br>
+                            <div class="form-group">
+                                <label for="txtPapellido">Primer Apellido:</label>
+                                <input type="search" class="form-control form-control-sm mayini datadoc required" name="Primer Apellido" maxlength="50" id="txtPapellido" />
+                            </div><br>
+                            <div class="form-group">
+                                <label for="txtSapellido">Segundo Apellido:</label>
+                                <input type="search" class="form-control form-control-sm mayini datadoc required" name="Segundo Apellido" maxlength="50" id="txtSapellido"/>
+                            </div><br>
+                            <div class="form-group">
+                                <label for="arcFoto" class="btn btn-secondary btn-sm form-control">
+                                    <i class="fa fa-camera"></i>
+                                    Agregar Fotografia
+                                </label>
+                                <input type="file" class="datadoc required" accept="image/*" hidden name="Fotografia" id="arcFoto" >
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-6 col-sm-12">
+                            <div class="form-group">
+                                <label for="txtEscalafon">Escalafon:</label>
+                                <input type="search" class="form-control form-control-sm datadoc required" name="Escalafon" maxlength="50" id="txtEscalafon"/>
+                            </div><br>
+                            <div class="form-group">
+                                <label for="txtImprema">Imprema:</label>
+                                <input type="search" class="form-control form-control-sm datadoc required" name="Imprema" maxlength="50" id="txtImprema"/>
+                            </div><br>
+                            <div class="form-group">
+                                <label for="txtTelefono">Telefono:</label>
+                                <input type="search" class="form-control form-control-sm datadoc required" name="Telefono" maxlength="16" id="txtTelefono"/>
+                            </div><br>
+                            <div class="form-group">
+                                <label for="txtCorreo">Correo:</label>
+                                <input type="search" class="form-control form-control-sm datadoc required" name="Correo" maxlength="120" id="txtCorreo"/>
+                            </div><br>
+                            <div class="form-group">
+                                <label for="txtSexo">Sexo:</label>
+                                <select class="form-control form-control-sm datadoc required required" name="Sexo" id="txtSexo">
+                                    <option value="">--</option>
+                                    <option value="masculino">Masculino</option>
+                                    <option value="femenino">Femenino</option>
+                                </select>
+                            </div><br>
+                            <div id="row">
+                                <div class="col-9" style="margin:0px; padding:0px; float:left">
+                                    <div class="form-group">
+                                      <label for="txtFechaNacimiento">Fecha de Nacimiento:</label>
+                                      <input type="date" class="form-control form-control-sm datadoc required" name="Fecha de Nacimiento" id="txtFechaNacimiento" required>
+                                    </div>
+                                </div>
+                                <div class="col-3" style="margin:0px; padding:0px; float: left;">
+                                    <div class="form-group">
+                                      <label for="txtEdad">Edad:</label>
+                                      <input type="number" readonly style="background:none; border:none" name="txtEdad" id="txtEdad" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="txtTitulo">Titulo:</label>
+                                <input type="search" class="form-control form-control-sm datadoc required" name="Titulo" maxlength="50" id="txtTitulo"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="vista_foto"></div> 
+                </div>
+            </div>                              
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" id="btn_guardar" value="crear_docente">Guardar</button>
+                <button class="btn btn-primary" type="button" id="btn_modificar" value="actualizar_docente">Modificar</button>
+                <button class="btn btn-secondary" type="button" id="btn_cancelar">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal modal-lg fade" id="divhistorial" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="text-center">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Asignación de Docentes en Centros Escolares</h1>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-row container">
+                    <div>
+                        <div id="asig_cent_foto" style="width:250px; height: 250px; float: left; border:none; overflow:hidden"></div>
+                        <div id="asig_cent_identidad"></div>
+                        <div id="asig_cent_nombre"></div>
+                        <div id="asig_cent_apellido"></div>
+                        <div id="asig_cent_escalafon"></div>
+                        <div id="asig_cent_estatus"></div>
+                        <div id="asig_cent_telf"></div>
+                        <div id="asig_cent_email"></div>
+                    </div>
+                    <div class="table-responsive border border-primary rounded p-3" style="display: inline-block; width:100%;">
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="txtCentro">Centro:</label>
+                                    <input type="text" id="txtCentro" autocomplete="off" list="lcentros" class="form-control form-control-sm" />
+                                    <datalist id="lcentros"></datalist>
+                                </div><br>
+                                <div class="form-group">
+                                    <label for="txtEstatus">Estatus:</label>
+                                    <select id="txtEstatus" class="form-control form-control-sm" required>
+                                        <option value="">--</option>
+                                        <option>Reubicado</option>
+                                        <option>Prestado</option>
+                                        <option>en propiedad</option>
+                                        <option>otros</option>
+                                    </select>
+                                </div><br>
+                                <div class="form-group">
+                                    <label for="txtHorasClase">Hora Total de Clases:</label>
+                                    <input type="number" class="form-control form-control-sm" id="txtHorasClase" />
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="txtPuesto">Puesto:</label>
+                                    <select class="form-control form-control-sm" id="txtPuesto" required>
+                                        <option value="">--</option>
+                                        <option>Consejero</option>
+                                        <option>maestro</option>
+                                        <option>Director</option>
+                                        <option>Asistente</option>
+                                        <option>Jefatura</option>
+                                        <option>Orientador</option>
+                                        <option>Secretario</option>
+                                        <option>subdirector</option>
+                                    </select>
+                                </div><br>
+                                <div class="form-group">
+                                    <label for="txtNombramiento">Fecha Nombramiento:</label>
+                                    <input type="date" id="txtNombramiento" class="form-control form-control-sm" />
+                                </div>
+                                <br>
+                                <button class="btn btn-primary form-control form-control-sm" id="btnGuardarAsignacion">Guardar</button>
+                                <button class="btn btn-primary form-control form-control-sm" id="btnActualizarAsignacion">Actualizar</button>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="txtCondicion">Condicion:</label>
+                                    <select class="form-control form-control-sm" id="txtCondicion" required>
+                                        <option value="">--</option>
+                                        <option>Permanente</option>
+                                        <option>Contrato</option>
+                                        <option>Interino</option>
+                                        <option>Licencia</option>
+                                    </select>
+                                </div><br>
+                                <div class="form-group">
+                                    <label for="txtFechaVencimiento">Fecha Vencimiento:</label>
+                                    <input type="date" id="txtFechaVencimiento" class="form-control form-control-sm" />
+                                </div>
+                                <br>
+                                <button class="btn btn-secondary form-control form-control-sm" id="btnLimpiar">Limpiar</button>
+                                <button class="btn btn-secondary form-control form-control-sm" id="btncancelarmodasignacion">Cancelar</button>
+                            </div>
+                        </div>                                                                       
+                        <div id="div_asignaciones"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal modal fade" id="camb_clave" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="text-center">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Cambio de Clave</h1>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="txtPnombre">Usuario</label>
+                    <input type="search" class="form-control form-control-sm " name="usuario" id="txtusuario" maxlength="12" />
+                </div><br>
+                <div class="form-group">
+                    <label for="txtPnombre">Repita Usuario</label>
+                    <input type="search" class="form-control form-control-sm " name="confirmar_usuario" id="txtusuarioconfirmado" maxlength="12" />
+                </div><br>
+                <div class="form-group">
+                    <label for="txtPnombre">Contraseña</label>
+                    <input type="password" class="form-control form-control-sm " name="clave" id="txtclave" maxlength="12" />
+                </div><br>
+                <div class="form-group">
+                    <label for="txtPnombre">Repita Contraseña</label>
+                    <input type="password" class="form-control form-control-sm " name="confirmar_clave" id="txtclaveconfirmada" maxlength="12" />
+                </div><br>
+                <center><button class="btn btn-ms btn-primary" id="acptar_cambio_clave" style="width:120px;">Aceptar</button></center>
+            </div>
+        </div>
+    </div>
+</div>
+<form action="view\html\reportes\docentes.php" method="post" id="formulario_reporte" target="_blank">
+</form>
+<div id="responseContainer"></div>
+<section id="identidad"></section>
+<script src="view\assets\js\docente.js?v=1.1.57"></script>

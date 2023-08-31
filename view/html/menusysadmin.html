@@ -1,0 +1,56 @@
+<div class="menu">
+  <div class="menu-item" id="m_escuelas">
+    <i class="fas fa-school icono_menu" ></i>
+    <a href="#">Escuelas</a>
+  </div>
+  <div class="menu-item" id="m_docentes">
+    <i class="fas fa-chalkboard-teacher icono_menu"></i>
+    <a href="#">Docentes</a>
+  </div>
+  <div class="menu-item" id="m_parte_mensual">
+    <i class="fas fa-file-alt icono_menu"></i>
+    <a href="#">Parte<br>Mensual</a>
+  </div>
+  <div class="menu-item" id="m_direcciones">
+    <i class="fas fa-briefcase icono_menu"></i>
+    <a href="#">Direcciones<br>Municipales</a>
+  </div>
+  <div class="menu-item" id="m_datos_personales">
+    <i class="fas fa-address-card icono_menu"></i>
+    <a href="#">Datos<br>Personales</a>
+  </div>
+  <div class="menu-item" id="m_crear_procesos">
+    <i class="fas fa-gears icono_menu"></i>
+    <a href="#">SOLICITUDES</a>
+  </div>
+  <div class="menu-item" id="salir">
+    <i class="fas fa-sign-out-alt icono_menu"></i>
+    <a href="#">SALIR</a>
+  </div>
+  <button type="button" class="btn btn-success abrir-modal" id="sel_rol" style="z-index:3;">
+    <i class="fas fa-suitcase"></i>
+    Establecer Rol
+  </button>
+  <img src="view/img/system/Logo_honduras.png" style="width:200px; float:left; z-index:2;" alt="<?php echo __DIR__ ?>"/>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Seleccionar Rol</h4>
+      </div>
+      <div class="modal-body">
+        <select name="cargo" id="cargo" class="form-control form-control-sm">
+        </select>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="cer_mod">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<section id="identidad"></section>
+<link href="view\assets\css\menu.css?v=1.1.15" rel="stylesheet"/>
+<script src="view\assets\js\menu.js?V=1.1.23"></script>

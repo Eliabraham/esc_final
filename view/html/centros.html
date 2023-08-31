@@ -1,0 +1,165 @@
+<div class="container">
+    <section id="identidad"></section>
+    <div class="col-12">
+        <div class="align-items-center justify-content-between" style="position:absolute; left:10%; top: 5%; width:80%; height:25%; overflow:auto;">
+            <h1 class="col-8" style="float:left">REGISTRO DE ESCUELAS</h1>
+            <div class="align-items-center col-4" style="float:left; ">
+                <button type="button" id="btn_add_centro" class="btn btn-sm btn-success col-2" style="width:100px">
+                    Agregar +
+                </button>
+                <button type="button" id="btn_reporte" class="btn btn-sm btn-success" style="width:100px">
+                    Reporte
+                </button>
+                <button type="button" id="btn_menu" class="btn btn-sm btn-success col-2" style="width:100px">
+                    Menu
+                </button>
+            </div>
+            <div class="row col-12">
+                <div style="width:50px; text-align:right;">
+                    <br><input type="checkbox" class="check" id="ch_sel_todo"/>
+                </div>
+                <div class="col">
+                    <label for="fil_codigo">Código:</label>
+                    <input type="text" class="form-control form-control-sm filtro" name="fil_codigo" id="fil_codigo">
+                </div>
+                <div class="col">
+                    <label for="fil_nombre">Nombre:</label>
+                    <input type="text" class="form-control form-control-sm filtro" name="fil_nombre" id="fil_nombre">
+                </div>
+                <div class="col">
+                    <label for="fil_tipo">Tipo de Centro:</label>
+                    <select class="form-control form-control-sm filtro" name="fil_tipo" id="fil_tipo" required>
+                        <option value="">--</option>
+                        <option value="Prebasica">Prebásica</option>
+                        <option value="Basica">Básica</option>
+                        <option value="Media">Media</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label for="fil_estatus">Estatus:</label>
+                    <select name="fil_estatus" id="fil_estatus" class="form-control form-control-sm filtro">
+                        <option value="">--</option>
+                        <option value="Activo">Activo</option>
+                        <option value="Inactivo (Baja Matricular)">Inactivo (Baja Matricular)</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label for="fil_acuerdo">N° Acuerdo:</label>
+                    <input type="text" name="fil_acuerdo" class="form-control form-control-sm filtro" id="fil_acuerdo">
+                </div>
+                <div class="col">
+                    <label for="fil_municipio">Municipio:</label>
+                    <select name="fil_municipio" class="form-control form-control-sm filtro" id="fil_municipio"></select>
+                </div>
+            </div>
+        </div>
+        <div class="form-control" id="tbl_centros" style="position:absolute; left:10%; top: 30%; width:80%; height:65%; overflow:auto;">
+        </div>
+    </div>
+</div>
+<div class="modal modal-lg fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Registro de Escuelas</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="txtCodigo">Código:</label>
+                                <input type="search" class="form-control form-control-sm centro required" name="Codigo" placeholder="Código del Centro Educativo" id="txtCodigo" maxlength="13" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="txtNombre">Nombre:</label>
+                                <input type="search" class="form-control form-control-sm centro required" name="Nombre" placeholder="Nombre del Centro Educativo" id="txtNombre" maxlength="70" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="txtTipo">Tipo de Centro:</label>
+                                <select class="form-control form-control-sm centro required" name="Tipo" id="txtTipo" required>
+                                    <option value="">--</option>
+                                    <option value="Prebasica">Prebásica</option>
+                                    <option value="Basica">Básica</option>
+                                    <option value="Media">Media</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="txtMunicipio">Municipio:</label>
+                                <select class="form-control form-control-sm centro required" name="Municipio" id="txtMunicipio">
+                                    <!--<option value="">--</option>
+                                    <option value="Arena">Arena I</option>
+                                    <option value="El Negrito">El Negrito</option>
+                                    <option value="El Progreso">El Progreso</option>
+                                    <option value="Jocón">Jocón</option>
+                                    <option value="Morazán">Morazán</option>
+                                    <option value="Olanchito">Olanchito</option>
+                                    <option value="Santa Rita">Santa Rita</option>
+                                    <option value="Sulaco">Sulaco</option>
+                                    <option value="Victoria">Victoria</option>
+                                    <option value="Yorito">Yorito</option>
+                                    <option value="Yoro">Yoro</option>-->
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="txtDireccion">Dirección:</label>
+                                <input type="search" class="form-control form-control-sm centro required" name="Direccion" placeholder="Dirección" id="txtDireccion" maxlength="180" required>
+                            </div>
+                            <div class="form-group">
+                                <br>
+                                <button class="btn btn-primary " style="width:100%;" type="button" id="btn_guardar" value="crear_centro">Guardar</button>
+                                <button class="btn btn-primary " style="width:100%;" type="button" id="btn_modificar" value="modificar_centro">Modificar</button>
+                                <br><br>
+                                <button class="btn btn-secondary " style="width:100%;" type="button" id="btn_cancelar">Cancelar</button>
+                            </div>                
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="Telefono">Teléfono:</label>
+                                <input type="number" class="form-control form-control-sm centro required" name="Telefono" id="txtTelefono" maxlength="15" required onkeypress="return solo_numero(event)">
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-7 col-sm-6">
+                                        <label for="txtN_acuerdo">Acuerdo:</label>
+                                        <input type="number" min="0" class="form-control form-control-sm centro required" name="Numero de Acuerdo" placeholder="Número de Acuerdo" id="txtN_acuerdo" maxlength="15" required onkeypress="return solo_numero(event)">
+                                    </div>
+                                    <div class="col-md-5 col-sm-6">
+                                        <br>
+                                        <label for="arcacuerdo" class="form-control btn btn-secondary btn-sm">
+                                            <i class="far fa-cloud-upload-alt"></i>
+                                        </label>
+                                        <input type="file" class="centro required" name="acuerdo_pdf" id="arcacuerdo" accept="application/pdf" hidden/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="txtEstatus">Estatus:</label>
+                                <select name="Estatus" id="txtEstatus" class="form-control form-control-sm centro required">
+                                    <option value="">--</option>
+                                    <option value="Activo">Activo</option>
+                                    <option value="Inactivo (Baja Matricular)">Inactivo (Baja Matricular)</option>
+                                </select>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <label for="arcLogo" class="btn btn-secondary form-control">
+                                    <i class="fa fa-camera"></i>
+                                    Agregar Logo
+                                </label>
+                                <input type="file" class="centro required" accept="image/*" hidden name="Logo" id="arcLogo" >
+                                <div id="vista_Logo" class="image-container col-12" style="height: 200px; overflow: auto;"></div>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+        </div>
+    </div>
+</div>
+<form action="view\html\reportes\centros.php" method="post" id="formulario_reporte" target="_blank">
+</form>
+<script src="view\assets\js\centro.js?v=1.1.41"></script>
