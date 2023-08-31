@@ -124,7 +124,7 @@
             if(!empty($_FILES["Foto"])){
                 $this->archivos($_FILES);
                 $ext=explode("/", $this->Foto['type']);
-                $nombre=explode("\\", $this->Foto['tmp_name']);
+                $nombre=explode("/", $this->Foto['tmp_name']);
                 $nom=array_pop($nombre);
                 $nom=explode(".",$nom);
                 $fotografia="view/img/docentes/".$nom[0].".".$ext[1];
