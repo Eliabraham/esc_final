@@ -71,4 +71,9 @@
                 }
             }catch(PDOException $e){return $e->getMessage();}
         }
+        public function crear_carpeta($ruta){
+            if (!file_exists($ruta)) {
+                mkdir($ruta, 0777, true);
+            }
+        }
     }

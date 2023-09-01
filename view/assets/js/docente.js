@@ -70,6 +70,7 @@ $(document).ready(function(){
                 data: data,
                 cache:false,
             }).done(function(resp){
+                console.log(resp);
                 $.notify(resp, "info");
                 listar();
                 $(".datadoc").val("");
