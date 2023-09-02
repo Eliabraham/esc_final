@@ -8,10 +8,12 @@
                 $sql="SELECT id FROM docente WHERE Identidad='$this->Identidad'";
                 if($this->contar($sql)==0){
                     $this->archivos($_FILES);
-                    $ext=explode("/", $this->Foto['type']);
-                    $nombre=explode("/", $this->Foto['tmp_name']);
+                    strpos($this->Foto['type'], '/') !== false ? $ext=explode("/", $this->Foto['type']):$ext=explode("\\", $this->Foto['type']);
+                    strpos($this->Foto['tmp_name'], '/') !== false ? $nombre=explode("/", $this->Foto['tmp_name']) : $nombre=explode("\\", $this->Foto['tmp_name']) ;
                     $nom=array_pop($nombre);
-                    //$nom=explode(".",$nom);
+                    $nom=str_replace(".tmp","",$nom);
+                    //_____________________________________________________________
+                    $this->crear_carpeta(__DIR__."/../view/img/docentes");
                     $fotografia="view/img/docentes/".$nom.".".$ext[1];
                     if(move_uploaded_file($this->Foto['tmp_name'] , __DIR__."/../".$fotografia)){
                         $respuesta.="\nFOTO GUARDADA SATISFACTORIAMENTE";
