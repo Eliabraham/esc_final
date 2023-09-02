@@ -9,7 +9,7 @@
                 if($this->contar($sql)==0){
                     $this->archivos($_FILES);
                     strpos($this->Foto['type'], '/') !== false ? $ext=explode("/", $this->Foto['type']):$ext=explode("\\", $this->Foto['type']);
-                    strpos($this->Foto['tmp_name'], '/') !== false ? $nombre=explode("/", $this->Foto['tmp_name']) : $nombre=explode("\\", $this->Foto['tmp_name']) ;
+                    strpos($this->Foto['tmp_name'], '/') !== false ? $nombre=explode("/", $this->Foto['tmp_name']) : $nombre=explode("\\", $this->Foto['tmp_name']);
                     $nom=array_pop($nombre);
                     $nom=str_replace(".tmp","",$nom);
                     //_____________________________________________________________
@@ -125,11 +125,11 @@
             Status='$this->Status'";
             if(!empty($_FILES["Foto"])){
                 $this->archivos($_FILES);
-                $ext=explode("/", $this->Foto['type']);
-                $nombre=explode("/", $this->Foto['tmp_name']);
+                strpos($this->Foto['type'], '/') !== false ? $ext=explode("/", $this->Foto['type']):$ext=explode("\\", $this->Foto['type']);
+                strpos($this->Foto['tmp_name'], '/') !== false ? $nombre=explode("/", $this->Foto['tmp_name']) : $nombre=explode("\\", $this->Foto['tmp_name']);
                 $nom=array_pop($nombre);
-                $nom=explode(".",$nom);
-                $fotografia="view/img/docentes/".$nom[0].".".$ext[1];
+                $nom=str_replace(".tmp","",$nom);
+                $fotografia="view/img/docentes/".$nom.".".$ext[1];
                 $sql.=",Foto='$fotografia'";
                 try{
                     session_start();
