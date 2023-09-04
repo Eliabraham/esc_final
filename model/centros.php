@@ -35,8 +35,8 @@
             //ASIGNACION DE VALORES_________________________________________________________________________
             $this->informacion($_POST);
             $this->archivos($_FILES);
-            strpos($this->Foto['type'], '/') !== false ? $ext=explode("/", $this->Foto['type']):$ext=explode("\\", $this->Foto['type']);
-            strpos($this->Foto['tmp_name'], '/') !== false ? $nombre=explode("/", $this->Foto['tmp_name']) : $nombre=explode("\\", $this->Foto['tmp_name']);
+            strpos($this->Logo['type'], '/') !== false ? $ext=explode("/", $this->Logo['type']):$ext=explode("\\", $this->Logo['type']);
+            strpos($this->Logo['tmp_name'], '/') !== false ? $nombre=explode("/", $this->Logo['tmp_name']) : $nombre=explode("\\", $this->Logo['tmp_name']);
             $nom     = array_pop($nombre);
             $nom=str_replace(".tmp","",$nom);
             $logo    = "view/img/escuelas/".$nom.".".$ext[1];
