@@ -110,20 +110,20 @@
                 $sql="SELECT logo,acuerdo FROM centro WHERE id_centro=$this->id";
                 $archi=$this->capturar($sql);
                 if(!empty($_FILES["acuerdo"])){
-                    $ext=explode("/", $this->acuerdo['type']);
-                    $acuerdo2=explode("\\", $this->acuerdo['tmp_name']);
+                    strpos($this->acuerdo['type'], '/') !== false ? $ext=explode("/", $this->acuerdo['type']):$ext=explode("\\", $this->acuerdo['type']);
+                    strpos($this->acuerdo['tmp_name'], '/') !== false ? $acuerdo2=explode("/", $this->acuerdo['tmp_name']) : $acuerdo2=explode("\\", $this->acuerdo['tmp_name']);
                     $nom=array_pop($acuerdo2);
-                    $nom=explode(".",$nom);
-                    $acuerdopdf="view/pdf/escuelas/".$nom[0].".".$ext[1];
+                    $nom=str_replace(".tmp","",$nom);
+                    $acuerdopdf="view/pdf/escuelas/".$nom.".".$ext[1];
                     unlink(__DIR__.'/../'.$archi[0]["acuerdo"]);
                     move_uploaded_file($this->acuerdo['tmp_name'] , __DIR__."/../".$acuerdopdf);
                 }
                 if(!empty($_FILES["Logo"])){
-                    $ext=explode("/", $this->Logo['type']);
-                    $logo2=explode("\\", $this->Logo['tmp_name']);
+                    strpos($this->Logo['type'], '/') !== false ? $ext=explode("/", $this->Logo['type']):$ext=explode("\\", $this->Logo['type']);
+                    strpos($this->Logo['tmp_name'], '/') !== false ? $logo2=explode("/", $this->Logo['tmp_name']) : $logo2=explode("\\", $this->Logo['tmp_name']);
                     $nom=array_pop($logo2);
-                    $nom=explode(".",$nom);
-                    $imglogo="view/img/escuelas/".$nom[0].".".$ext[1];
+                    $nom=str_replace(".tmp","",$nom);
+                    $imglogo="view/img/escuelas/".$nom.".".$ext[1];
                     unlink(__DIR__.'/../'.$archi[0]["logo"]);
                     move_uploaded_file($this->Logo['tmp_name'] , __DIR__."/../".$imglogo);
                 }
