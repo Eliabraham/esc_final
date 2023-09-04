@@ -48,7 +48,9 @@
             $sql="INSERT INTO centro (Codigo_centro, Nombre, Direccion ,Municipio , Tipo_centro,Telefono, N_acuerdo, estatus, logo, acuerdo)VALUES('$this->Codigo', '$this->Nombre', '$this->Direccion', '$this->Municipio', '$this->Tipo','$this->Telefono', '$this->N_acuerdo', '$this->Estatus','$logo', '$acuerdo')";
             $vid=$this->ejecutar($sql);
             if($vid>0){$this->respuesta=$this->respuesta."\n INSERCION REALIZADA SATISFACTORIAMENTE";}
+            $this->crear_carpeta(__DIR__."/../view/img/escuelas");
             move_uploaded_file($this->Logo['tmp_name'] , __DIR__."/../".$logo);
+            $this->crear_carpeta(__DIR__."/../view/pdf/escuelas");
             move_uploaded_file($this->acuerdo['tmp_name'] , __DIR__."/../".$acuerdo);
             print($this->respuesta);
             $this->cone = null;
