@@ -49,11 +49,12 @@ $(document).ready(function(){
                 cache:false,
             }).done(function(resp){
                 $.notify(resp, "info");
+                console.log(resp, "info");
                 const selectMunicipio = document.getElementById('txtMunicipio');
                 let mun=$("#txtMunicipio").val();
-                $(".centro").val("");
+                //$(".centro").val("");
                 if (selectMunicipio.disabled) {$("#txtMunicipio").val(mun);} 
-                $("#vista_Logo").html("");
+                //$("#vista_Logo").html("");
                 listar();
             }).fail(function(jqXHR, textStatus){
                 validate.error_ajax(jqXHR, textStatus)

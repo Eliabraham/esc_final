@@ -109,20 +109,7 @@
         public function update_docente(){
             $respuesta="";
             $this->informacion($_POST);
-            $sql="UPDATE docente SET 
-            sexo='$this->Sexo',
-            titulo='$this->Titulo',
-            fecha_nacimeito='$this->FechaNacimiento',
-            Identidad='$this->Identidad',
-            Nombre1='$this->Pnombre',
-            Nombre2='$this->Snombre',
-            Apellido1='$this->Papellido',
-            Apellido2='$this->Sapellido',
-            Escalafon='$this->Escalafon',
-            Imprema='$this->Imprema',
-            Telefono='$this->Telefono',
-            Correo='$this->Correo',
-            Status='$this->Status'";
+            $sql="UPDATE docente SET  sexo='$this->Sexo', titulo='$this->Titulo', fecha_nacimeito='$this->FechaNacimiento', Identidad='$this->Identidad', Nombre1='$this->Pnombre', Nombre2='$this->Snombre', Apellido1='$this->Papellido', Apellido2='$this->Sapellido', Escalafon='$this->Escalafon', Imprema='$this->Imprema', Telefono='$this->Telefono', Correo='$this->Correo', Status='$this->Status'";
             if(!empty($_FILES["Foto"])){
                 $this->archivos($_FILES);
                 strpos($this->Foto['type'], '/') !== false ? $ext=explode("/", $this->Foto['type']):$ext=explode("\\", $this->Foto['type']);

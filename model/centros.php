@@ -35,15 +35,15 @@
             //ASIGNACION DE VALORES_________________________________________________________________________
             $this->informacion($_POST);
             $this->archivos($_FILES);
-            $ext     = explode("/", $this->Logo['type']);
-            $nombre  = explode("/", $this->Logo['tmp_name']);
+            strpos($this->Foto['type'], '/') !== false ? $ext=explode("/", $this->Foto['type']):$ext=explode("\\", $this->Foto['type']);
+            strpos($this->Foto['tmp_name'], '/') !== false ? $nombre=explode("/", $this->Foto['tmp_name']) : $nombre=explode("\\", $this->Foto['tmp_name']);
             $nom     = array_pop($nombre);
-            //$nom     = explode(".",$nom);
+            $nom=str_replace(".tmp","",$nom);
             $logo    = "view/img/escuelas/".$nom.".".$ext[1];
-            $ext     = explode("/", $this->acuerdo['type']);
-            $nombre  = explode("/", $this->acuerdo['tmp_name']);
+            strpos($this->acuerdo['type'], '/') !== false ? $ext=explode("/", $this->acuerdo['type']):$ext=explode("\\", $this->acuerdo['type']);
+            strpos($this->acuerdo['tmp_name'], '/') !== false ? $nombre=explode("/", $this->acuerdo['tmp_name']):$nombre=explode("\\", $this->acuerdo['tmp_name']);
             $nom     = array_pop($nombre);
-            //$nom     = explode(".",$nom);
+            $nom=str_replace(".tmp","",$nom);
             $acuerdo = "view/pdf/escuelas/".$nom.".".$ext[1];
             $sql="INSERT INTO centro (Codigo_centro, Nombre, Direccion ,Municipio , Tipo_centro,Telefono, N_acuerdo, estatus, logo, acuerdo)VALUES('$this->Codigo', '$this->Nombre', '$this->Direccion', '$this->Municipio', '$this->Tipo','$this->Telefono', '$this->N_acuerdo', '$this->Estatus','$logo', '$acuerdo')";
             $vid=$this->ejecutar($sql);
