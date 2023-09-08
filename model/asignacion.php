@@ -62,14 +62,14 @@
             $this->vid=$this->ejecutar($sql);
             if($this->vid[0]==1){$this->respuesta="\n INSERCION REALIZADA SATISFACTORIAMENTE";}
             else{$this->respuesta="\n".$this->vid[1][2];}
-            print($this->respuesta);
             $sql="SELECT id_usuario FROM usuarios WHERE id_docente=$this->docente";
-            if($this->contar($sql)==0){
+            $calc=$this->contar($sql);
+            if($calc==0){
                 $sql = "SELECT id, Correo, CONCAT(Nombre1, ' ', Nombre2, ' ', Apellido1, ' ', Apellido2) AS NombreCompleto FROM docente WHERE id = $this->docente";
                 $persona=$this->capturar($sql);
                 $par = $persona[0]['Correo'];
                 $nombre=$persona[0]['NombreCompleto'];
-                $sql="INSERT INTO usuarios(nombre, usuario, clave, id_docente)VALUES('$nombre','$this->puesto','$par','$par', 'activo',$this->docente)";
+                $sql="INSERT INTO usuarios(nombre, usuario, clave, id_docente)VALUES('$nombre','$par','$par',$this->docente)";
                 $this->ejecutar($sql);
                 print("ACCION REALIZADA SATISFACTORIAMENTE");
             }
