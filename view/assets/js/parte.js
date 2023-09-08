@@ -129,6 +129,8 @@ $(document).ready(function(){
             }
             ntr+="<td><button onclick='eliminar_fila(this)' class='btn btn-sm btn-warning'><i class='fas fa-trash-alt'/></button></td></tr>";
             $("#tabinfdoc > tbody").append(ntr);
+            $(".tabprof").val("");
+            $("#ltdocente").focus();
         }
     });
     $("#btn_reporte").on({
