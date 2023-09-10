@@ -14,6 +14,7 @@ $(document).ready(function(){
             $(".proceso, #campo, #tipo, #valores, #descripcion").val("");
             $("#modificar_operacion").hide();
             $("#guardar_operacion").show();
+            $("#tbl_campos tbody").html("");
         }
     });
     $("#agregar_campo").on({
@@ -235,6 +236,7 @@ function editar_operacion(a){
         cache: false,
     }).done(function(resp){
         resp=JSON.parse(resp);
+        console.log(resp);
         $("#exampleModal").modal("show");
         $("#txtnombre_proceso").val(resp[0][0]['nombre_proceso']);
         $("#txtdescripcion_proceso").val(resp[0][0]['descripcion_proceso']);
@@ -441,7 +443,7 @@ function mostrar_solicitud(a){
         }
         ht=`${ht}<button class="btn btn-sm btn-secondary" id="btnenviar" onclick="cancelar_accion()" style="width:200px">Volver</button>`;
         $("#txtcausa").text(mens[0][0].causa);
-        $("#txtnombre_proceso").text(mens[0][0].nombre_proceso);
+        $("#txtnombre_proceso_solicitado").text(mens[0][0].nombre_proceso);
         $("#mostrar_campos").html(ht);
     }).fail(function(jqXHR, textStatus) {
         validate.error_ajax(jqXHR, textStatus);
