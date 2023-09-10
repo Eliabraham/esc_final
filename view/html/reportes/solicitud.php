@@ -2,7 +2,6 @@
     include_once("../../../model/model.php");
     $md=new ProgramModel;
     require_once('../../../TCPDF/tcpdf.php');
-
     class MyPDF extends TCPDF {
         public function Footer() {
             $currentPage = $this->getAliasNumPage();
@@ -129,8 +128,16 @@
         for($i=0;$i<count($detalles);$i++){
             $pdf->SetFont('helvetica','B', 12);
             $pdf->Cell(190, 7,$detalles[$i]["campo"], 0, 1, 'L');
+            $posicion_coincidencia1 = strpos($detalles[$i]['valor'], "\php");
+            $posicion_coincidencia2 = strpos($detalles[$i]['valor'], "/php");
             $pdf->SetFont('helvetica','', 12);
-            $pdf->Cell(190, 7,str_replace('_', ' ',$detalles[$i]['valor']), 0, 1, 'L');
+            if($posicion_coincidencia1===false && $posicion_coincidencia2===false){
+                $pdf->Cell(190, 7,str_replace('_', ' ',$detalles[$i]['valor']), 0, 1, 'L');
+            }else{
+                $ruta = "copia el siguiente enlace y colocalo en la barra de navegación:"; 
+                $pdf->Cell(190, 7, $ruta, 0, 1, 'L'); // Agregar el texto del enlace
+                $pdf->Cell(190, 7, CONFIG['DB_HOST']."/esc_final/".$detalles[$i]['valor'], 0, 1, 'L');
+            }
         }
         $sql="SELECT nt.*, asi.puesto, concat(doc.Nombre1,' ',doc.Nombre2,' ',doc.Apellido1,' ',doc.Apellido2) AS nombre_completo, doc.Telefono, doc.Correo 
         FROM observaciones_solicitudes as nt
